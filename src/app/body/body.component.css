@@ -1,5 +1,15 @@
+textarea{
+  resize: none;
+}
+
+h{
+
+}
+
 p{
+  font-family: open-sans;
   color: black;
+
 }
 
 .text-position{
@@ -13,4 +23,14 @@ background-color: white;
 
 .img-icon{
   width: 15%;
+}
+
+.body-service{
+  background-color: #025464;
+  color: white;
+}
+
+.footer-contacus{
+  background-color: #E57C23;
+  padding-bottom: 10%;
 }
