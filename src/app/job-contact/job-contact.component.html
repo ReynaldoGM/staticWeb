@@ -1,59 +1,99 @@
-<div class="container container-job" id="job-container">
+<div class="container container-job " id="job-container">
   <div class="row">
     <div class="col text-center">
-      <h1>ONLINE TRANSPORT OFFERS EMPLOYMENT OPPORTUNITY</h1>
-      <p>If you are looking for a job opportunity, apply with us fill out the following form to send your information</p>
+      <h1 class="display-6">ONLINE TRANSPORT OFFERS EMPLOYMENT OPPORTUNITY</h1>
+      <p class="lead">If you are looking for a job opportunity, apply with us fill out the following form to send your information</p>
 
     </div>
 
   </div>
-  <form>
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="row ">
       <div class="col-md-6 py-2">
-        <input class="form-control" id="inputName" type="text" placeholder="Name">
+        <div class="form-floating">
+          <input class="form-control" formControlName="inputName" id="inputName" type="text" placeholder="Name" required>
+          <label for="inputName">Name</label>
+          <div *ngIf= "jobForm.get('inputName')?.invalid  && (jobForm.get('inputName')?.dirty || jobForm.get('inputName')?.touched)" class="alert alert-danger">
+            <div *ngIf="jobForm.get('inputName')?.errors?.['required']">
+                Name is required.
+              </div>
+          </div>
+        </div>
       </div>
+
       <div class="col-md-6 py-2">
-        <input class="form-control" id="inputAdress" type="text" placeholder="Address">
+        <div class="form-floating">
+          <input class="form-control" formControlName="inputAdress" id="inputAdress" type="text" placeholder="Address">
+          <label for="inputAdress">Adress</label>
+        </div>
       </div>
     </div>
+
     <div class="row ">
       <div class="col-md-6 py-2">
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+        <div class="form-floating">
+          <input type="email" class="form-control" formControlName="inputEmail" id="inputEmail" placeholder="Email">
+          <label for="floatingInput">Email address</label>
+        </div>
       </div>
       <div class="col-md-6 py-2">
-        <input class="form-control" id="inputPhone" type="tel" placeholder="Phone Number">
+        <div class="form-floating">
+          <input class="form-control" id="inputPhone" formControlName="inputPhone" type="tel" placeholder="Phone Number">
+          <label for="inputPhone">Phone Number</label>
+          <div *ngIf= "jobForm.get('inputPhone')?.invalid  && (jobForm.get('inputPhone')?.dirty || jobForm.get('inputPhone')?.touched)" class="alert alert-danger">
+            <div *ngIf="jobForm.get('inputPhone')?.errors?.['required']">
+                Phone Number is required.
+              </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 py-2">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Experience</option>
-          <option value="1">Reefer</option>
-          <option value="2">Dry</option>
-          <option value="3">Both</option>
-        </select>
+        <div class="form-floating">
+          <select class="form-select" id="inputExperience" formControlName="inputExperience" aria-label="Default select example">
+            <option selected>Experience</option>
+            <option value="1">Reefer</option>
+            <option value="2">Dry</option>
+            <option value="3">Both</option>
+          </select>
+          <label for="inputExperience">Experience</label>
+        </div>
       </div>
       <div class="col-md-6 py-2">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Type of license</option>
-          <option value="1">CDL</option>
-          <option value="2">Federal</option>
-        </select>
+        <div class="form-floating">
+          <select class="form-select" id="inputLicense" formControlName="inputLicense" aria-label="Default select example">
+            <option selected>Type of license</option>
+            <option value="1">CDL</option>
+            <option value="2">Federal</option>
+          </select>
+          <label for="inputLicense">Type of license</label>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 py-2">
-        <input class="form-control" id="inputYol" type="text" placeholder="Year of Issue of license">
+        <div class="form-floating">
+          <input class="form-control" id="inputYol" formControlName="inputYol" type="text" placeholder="Year of Issue of license">
+          <label for="inputYol">Year of Issue of license</label>
+        </div>
       </div>
       <div class="col-md-6 py-2">
-        <input class="form-control" id="inputName" type="text" placeholder="Are you currently working for a company, which one?">
+        <div class="form-floating">
+          <input class="form-control" id="inputCurrentCompany" formControlName="inputCurrentCompany" type="text" placeholder="Are you currently working for a company, which one?">
+          <label for="inputCurrentCompany">Current Employer</label>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col py-2">
-        <textarea class="form-control" id="inputTextArea" rows="3" placeholder="Most Frequent routes"></textarea>
+        <div class="form-floating">
+          <textarea class="form-control" id="inputRoutes" formControlName="inputRoutes" rows="3" placeholder="Most Frequent routes"></textarea>
+          <label for="inputRoutes">Most Frequent routes</label>
+        </div>
       </div>
     </div>
+    <button [disabled]="jobForm.invalid" type="submit" class="btn btn-primary " name="button">Submit</button>
   </form>
-  <button type="button" class="btn btn-primary " name="button">Submit</button>
+
 </div>

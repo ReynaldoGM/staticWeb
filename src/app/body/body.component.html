@@ -199,7 +199,7 @@
         to ensue; and equal blame belongs to those who fail in their duty through weakness
         of will, which is the same as saying through shrinking from toil and pain.
         These cases are perfectly simple and easy to distinguish.</p>
-      <button type="button" name="button">Join Now</button>
+      <a routerLink="/jobs" class="btn btn-primary"type="button" name="button">Join Now</a>
     </div>
     <div class="col-6  d-none d-md-block">
       <img src="../assets/img/join-team-2.jpg" class="img-fluid " alt="...">
@@ -209,46 +209,74 @@
 <div class="container-fluid   footer-contacus" id="contacus">
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <h2>Contac Us</h2>
+      <div class="col-12" >
+        <h2 class="display-4 contact-info">Contac Us</h2>
       </div>
     </div>
     <div class="row ">
-      <div class="col-md-6">
-        <h4>Address</h4>
-        <p>12345 N Shepard DrSan Derfirn, LN 99876. </p>
+      <div class="col-md-6 contact-info">
+        <h4 class="display-6">Address</h4>
+        <p class="lead">310 CRESWELL DR SAN ANTONIO TX 78220</p>
 
-        <h4>Phone</h4>
-        <p>666 666 6666</p>
+        <h4 class="display-6">Phone</h4>
+        <p class="lead">210 970 8336</p>
 
-        <h4>Office Hour</h4>
-        <p>1Monday to Friday 8:00 am to 6:00 pm </p>
+        <h4 class="display-6">Office Hour</h4>
+        <p class="lead">Monday to Friday 9:00 am to 6:00 pm </p>
+
+        <h4 class="display-6">Email</h4>
+        <p class="lead">onlinetransport210@gmail.com</p>
       </div>
       <div class="col-md-6">
-        <form>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="row ">
             <div class="col-md-6 py-2">
-              <input class="form-control" id="inputName" type="text" placeholder="Name">
+              <div class="form-floating">
+                <input class="form-control" formControlName="inputName" id="inputName" type="text" placeholder="Name">
+                <label for="inputName">Name</label>
+                <div *ngIf="contactForm.get('inputName')?.invalid  && (contactForm.get('inputName')?.dirty || contactForm.get('inputName')?.touched)" class="alert alert-danger">
+                  <div *ngIf="contactForm.get('inputName')?.errors?.['required']">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-md-6 py-2">
-              <input class="form-control" id="inputCompany" type="text" placeholder="Company">
+              <div class="form-floating">
+                <input class="form-control" formControlName="inputCompany" id="inputCompany" type="text" placeholder="Company">
+                <label for="inputCompany">Company</label>
+              </div>
             </div>
           </div>
           <div class="row ">
             <div class="col-md-6 py-2">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+              <div class="form-floating">
+                <input type="email" class="form-control" formControlName="inputEmail"  id="inputEmail" placeholder="Email">
+                <label for="inputEmail">Email</label>
+              </div>
             </div>
             <div class="col-md-6 py-2">
-              <input class="form-control" id="inputPhone" type="tel" placeholder="Phone Number">
+              <div class="form-floating">
+                <input class="form-control" formControlName="inputPhone"  id="inputPhone" type="tel" placeholder="Phone Number">
+                <label for="inputPhone">Phone Number</label>
+                <div *ngIf="contactForm.get('inputPhone')?.invalid  && (contactForm.get('inputPhone')?.dirty || contactForm.get('inputPhone')?.touched)" class="alert alert-danger">
+                  <div *ngIf="contactForm.get('inputPhone')?.errors?.['required']">
+                    Phone Number is required.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col py-2">
-              <textarea class="form-control" id="inputTextArea" rows="3" placeholder="Meessage"></textarea>
+              <div class="form-floating">
+                <textarea class="form-control" formControlName="inputMessage" id="inputMessage" rows="3" placeholder="Meessage"></textarea>
+                <label for="inputTextArea">Message</label>
+              </div>
             </div>
           </div>
+          <button [disabled]="contactForm.invalid" type="submit" class="btn btn-primary " name="button">Submit</button>
         </form>
-        <button type="button" class="btn btn-primary " name="button">Submit</button>
       </div>
     </div>
   </div>
