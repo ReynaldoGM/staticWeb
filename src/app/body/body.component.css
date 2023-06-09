@@ -15,6 +15,21 @@ join-team-contact{
   color: #273045;
 }
 
+.carrousel-container{
+padding: 0;
+
+}
+
+.carrousel-img{
+  overflow: hidden;
+
+
+}
+
+.carrousel-img img{
+  width: 100%;
+/*  object-position: 0em -15em;*/
+}
 
 .contact-info{
   color:#025464;
