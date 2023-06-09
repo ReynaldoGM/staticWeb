@@ -12,11 +12,12 @@ export class EmailService {
       'Content-Type': 'application/json',
     })
   };
-  mailGet = 'https://node-mail-sender-9lk5.onrender.com';
-  mailUrl = 'https://node-mail-sender-9lk5.onrender.com/sendEmail';
+  // mailGet = 'https://node-mail-sender-9lk5.onrender.com';
+  // mailUrl = 'https://node-mail-sender-9lk5.onrender.com/sendEmail';
 
 
-
+  mailGet = 'http://localhost:3000';
+  mailUrl = 'http://localhost:3000/sendEmail';
 
   sendMail(bodyMail: string): Observable<string> {
     return this.http.post<string>(this.mailUrl, bodyMail, this.httpOptions);
