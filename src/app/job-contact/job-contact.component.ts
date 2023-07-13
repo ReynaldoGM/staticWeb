@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { EmailService } from '../email/email.service';
 import { interval } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
@@ -25,7 +26,8 @@ export class JobContactComponent implements OnInit {
   });
 
 
-  constructor(private emailService: EmailService) { }
+
+  constructor(private emailService: EmailService, private router: Router) { }
 
   ngOnInit() {
     console.log('hi');
@@ -45,12 +47,14 @@ export class JobContactComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.jobForm.value);
-    console.warn(this.jobForm.value);
+    console.log(JSON.stringify(this.jobForm.value));
+    console.log(this.jobForm.get('inputName')?.value);
+    console.warn(this.jobForm.getRawValue());
 
-    this.emailService.sendMail('{"text":"ggg"}').subscribe(
+    this.emailService.sendMail('{"subject":"Contact Driver","text":'+JSON.stringify(this.jobForm.value)+'}').subscribe(
       err => console.log('HTTP Error', err),
     );
     console.log("Mail send");
+    this.router.navigate(['/response']);
   }
 }

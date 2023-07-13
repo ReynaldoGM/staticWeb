@@ -8,14 +8,16 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { JobContactComponent } from './job-contact/job-contact.component';
 import { HttpClientModule } from '@angular/common/http';
-import {EmailService} from './email/email.service'
+import {EmailService} from './email/email.service';
+import { ResponseMessageComponent } from './response-message/response-message.component'
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     BodyComponent,
     FooterComponent,
-    JobContactComponent
+    JobContactComponent,
+    ResponseMessageComponent
   ],
   imports: [
     BrowserModule,

@@ -18,10 +18,17 @@ export class EmailService {
 
   mailGet = 'http://localhost:3000';
   mailUrl = 'http://localhost:3000/sendEmail';
+  mailUrlContact = 'http://localhost:3000/sendEmailContact';
 
   sendMail(bodyMail: string): Observable<string> {
     return this.http.post<string>(this.mailUrl, bodyMail, this.httpOptions);
   }
+
+
+  sendEmailContact(bodyMail: string): Observable<string> {
+      return this.http.post<string>(this.mailUrlContact, bodyMail, this.httpOptions);
+    }
+
 
 
   getMail():Observable<string>{
